@@ -15,3 +15,9 @@ export interface AuthState {
     user: UserInfo | null;
     loading: boolean;
 }
+
+export interface Variants {
+    primary: string;
+    danger: string;
+    warning: string;
+}

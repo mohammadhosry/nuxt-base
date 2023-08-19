@@ -1,14 +1,15 @@
 <template>
     <div>
-        <h1 class="text-3xl text-blue-900">login</h1>
-        <button class="px-3 py-1 bg-blue-500 text-white hover:bg-blue-600" @click="login">
-            login
-        </button>
+        <h1 class="text-3xl text-blue-900">Login</h1>
+        <br />
+        <BaseButton variant="primary" @click="login" :disabled="loading">Login</BaseButton>
     </div>
 </template>
 
 <script setup lang="ts">
-const { login: authLogin } = useAuthStore();
+const authStore = useAuthStore();
+const { login: authLogin } = authStore;
+const { loading } = storeToRefs(authStore);
 
 const login = async () => {
     await authLogin();

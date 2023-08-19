@@ -2,9 +2,7 @@
     <Navbar :items="items">
         <template #append>
             <li v-if="isLoggedIn">
-                <button class="px-3 py-1 bg-red-500 text-white hover:bg-red-600" @click="logout">
-                    logout
-                </button>
+                <BaseButton variant="danger" @click="logout">Logout</BaseButton>
             </li>
         </template>
     </Navbar>
