@@ -11,6 +11,11 @@ export interface UserInfo {
     email: string;
 }
 
+export interface UserLogin {
+    username: string;
+    password: string;
+}
+
 export interface AuthState {
     user: UserInfo | null;
     loading: boolean;

@@ -2,6 +2,19 @@
     <div>
         <h1 class="text-3xl text-blue-900">Login</h1>
         <br />
+        <input
+            type="text"
+            class="border border-gray-400"
+            placeholder="Username"
+            v-model="credentials.username"
+            autofocus
+        />
+        <input
+            type="password"
+            class="border border-gray-400"
+            placeholder="Password"
+            v-model="credentials.password"
+        />
         <BaseButton variant="primary" @click="login" :disabled="loading">Login</BaseButton>
     </div>
 </template>
@@ -11,9 +24,19 @@ const authStore = useAuthStore();
 const { login: authLogin } = authStore;
 const { loading } = storeToRefs(authStore);
 
+const credentials = reactive({
+    username: "",
+    password: "",
+});
+
 const login = async () => {
-    await authLogin();
-    navigateTo("/");
+    const { error } = await authLogin(credentials);
+
+    if (error) {
+        alert(error);
+    } else {
+        navigateTo("/");
+    }
 };
 
 definePageMeta({

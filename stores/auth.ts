@@ -1,4 +1,4 @@
-import { AuthState, UserInfo } from "types";
+import { AuthState, UserLogin } from "types";
 
 export const useAuthStore = defineStore("auth", {
     state: (): AuthState => {
@@ -11,21 +11,35 @@ export const useAuthStore = defineStore("auth", {
         isLoggedIn: (state) => state.user !== null,
     },
     actions: {
-        async login() {
+        async login({ username, password }: UserLogin) {
             this.loading = true;
 
-            const user = await new Promise<UserInfo>((resolve) => {
+            const { user, error } = await new Promise<{
+                user: AuthState["user"];
+                error: string | null;
+            }>((resolve) => {
                 setTimeout(() => {
-                    resolve({
-                        name: "mohamamd",
-                        email: "moahmmad.hosry@gmail.com",
-                    });
+                    if (username == "mohammad" && password == "1234") {
+                        resolve({
+                            user: {
+                                name: "Mohamamd",
+                                email: "moahmmad.hosry@gmail.com",
+                            },
+                            error: null,
+                        });
+                    } else {
+                        resolve({ error: "wrong credentials", user: null });
+                    }
                 }, 1600);
             });
 
-            this.user = user;
+            if (user) {
+                this.user = user;
+            }
 
             this.loading = false;
+
+            return { error };
         },
         logout() {
             this.user = null;
