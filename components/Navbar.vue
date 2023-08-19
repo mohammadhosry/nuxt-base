@@ -26,18 +26,13 @@
                     }}</NuxtLink>
                 </li>
             </template>
+            <slot name="append"></slot>
         </ul>
     </nav>
 </template>
 
 <script setup lang="ts">
-import { NuxtLinkProps } from "nuxt/app";
-
-export type NavbarItem = {
-    label?: string;
-    name: string;
-    hide?: boolean;
-} & Pick<NuxtLinkProps, "to">;
+import { NavbarItem } from "types";
 
 defineProps<{
     items: NavbarItem[];

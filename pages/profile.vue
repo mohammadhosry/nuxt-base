@@ -5,9 +5,10 @@
 </template>
 
 <script setup lang="ts">
-// definePageMeta({
-//     navbar: {
-//         order: 2,
-//     },
-// });
+definePageMeta({
+    middleware: "auth",
+    // navbar: {
+    //     order: 2,
+    // },
+});
 </script>
