@@ -24,5 +24,5 @@ export interface AuthState {
 export interface Variants {
     primary: string;
     danger: string;
-    warning: string;
+    success: string;
 }

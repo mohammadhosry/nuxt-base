@@ -1,10 +1,11 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-    modules: ["@nuxtjs/tailwindcss", "@pinia/nuxt"],
+    modules: ["@pinia/nuxt", "@unocss/nuxt"],
     pinia: {
         autoImports: ["defineStore", "acceptHMRUpdate", "storeToRefs"],
     },
     imports: { dirs: ["stores"] },
+    css: ["~/assets/main.css"],
     app: {
         head: {
             // htmlAttrs: {
