@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1 class="text-3xl text-blue-900">profile</h1>
+        <h1 class="text-3xl text-blue-900 dark:text-blue-400">profile</h1>
     </div>
 </template>
 

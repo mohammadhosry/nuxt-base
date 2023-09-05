@@ -1,8 +1,10 @@
-import { defineConfig, presetWebFonts, presetUno } from "unocss";
+import { defineConfig, presetWebFonts, presetUno, transformerDirectives } from "unocss";
 
 export default defineConfig({
     presets: [
-        presetUno(),
+        presetUno({
+            dark: "media",
+        }),
         presetWebFonts({
             provider: "google",
             fonts: {
@@ -15,6 +17,7 @@ export default defineConfig({
             },
         }),
     ],
+    transformers: [transformerDirectives()],
     theme: {
         colors: {
             primary: {
