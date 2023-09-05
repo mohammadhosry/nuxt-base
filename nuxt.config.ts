@@ -1,8 +1,15 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-    modules: ["@pinia/nuxt", "@unocss/nuxt"],
+    modules: ["@pinia/nuxt", "@unocss/nuxt", "@nuxtjs/supabase"],
     pinia: {
         autoImports: ["defineStore", "acceptHMRUpdate", "storeToRefs"],
+    },
+    supabase: {
+        redirectOptions: {
+            login: "/auth/login",
+            callback: "/confirm",
+            exclude: ["/"],
+        },
     },
     imports: { dirs: ["stores"] },
     css: ["~/assets/main.css"],

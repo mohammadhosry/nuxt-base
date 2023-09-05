@@ -7,7 +7,7 @@
         </template>
     </Navbar>
     <hr />
-    <pre>{{ { isLoggedIn, user, loading } }}</pre>
+    <pre>{{ { isLoggedIn, userEmail: user?.email, loading } }}</pre>
     <main><slot /></main>
 </template>
 
@@ -15,10 +15,15 @@
 import { NavbarItem } from "types";
 
 const authStore = useAuthStore();
-const { logout } = authStore;
+const { logout: authLogout } = authStore;
 const { user, isLoggedIn, loading } = storeToRefs(authStore);
 
-// const foo = ref(false);
+const logout = async () => {
+    const { error } = await authLogout();
+
+    if (error) alert(error);
+    else navigateTo("/");
+};
 
 const items = computed<NavbarItem[]>(() => [
     { name: "home" },
