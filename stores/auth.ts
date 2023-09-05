@@ -1,51 +1,47 @@
-import { AuthState, UserLogin } from "types";
+import { UserLogin } from "types";
 
-export const useAuthStore = defineStore("auth", {
-    state: (): AuthState => {
+// not used for now
+export const useAuthStore = defineStore("auth", () => {
+    const user = useSupabaseUser();
+    const { auth } = useSupabaseClient();
+
+    const loading = ref(false);
+
+    const isLoggedIn = computed(() => !!user.value);
+
+    async function login({ email, password }: UserLogin) {
+        loading.value = true;
+
+        const { data, error } = await auth.signInWithPassword({
+            email,
+            password,
+        });
+
+        loading.value = false;
+
         return {
-            user: null,
-            loading: false,
+            user: data,
+            error,
         };
-    },
-    getters: {
-        isLoggedIn: (state) => state.user !== null,
-    },
-    actions: {
-        async login({ username, password }: UserLogin) {
-            this.loading = true;
+    }
 
-            const { user, error } = await new Promise<{
-                user: AuthState["user"];
-                error: string | null;
-            }>((resolve) => {
-                setTimeout(() => {
-                    if (username == "mohammad" && password == "1234") {
-                        resolve({
-                            user: {
-                                name: "Mohamamd",
-                                email: "moahmmad.hosry@gmail.com",
-                            },
-                            error: null,
-                        });
-                    } else {
-                        resolve({ error: "wrong credentials", user: null });
-                    }
-                }, 1600);
-            });
+    async function logout() {
+        loading.value = true;
 
-            if (user) {
-                this.user = user;
-            }
+        const { error } = await auth.signOut();
 
-            this.loading = false;
+        loading.value = false;
 
-            return { error };
-        },
-        logout() {
-            this.user = null;
-            console.log("logout", this.user);
-        },
-    },
+        return { error };
+    }
+
+    return {
+        user,
+        isLoggedIn,
+        loading,
+        login,
+        logout,
+    };
 });
 
 if (import.meta.hot) {

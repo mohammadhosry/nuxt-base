@@ -6,19 +6,9 @@ export type NavbarItem = {
     hide?: boolean;
 } & Pick<NuxtLinkProps, "to">;
 
-export interface UserInfo {
-    name: string;
-    email: string;
-}
-
 export interface UserLogin {
-    username: string;
+    email: string;
     password: string;
-}
-
-export interface AuthState {
-    user: UserInfo | null;
-    loading: boolean;
 }
 
 export interface Variants {
