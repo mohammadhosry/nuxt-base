@@ -38,7 +38,7 @@ export default defineConfig({
         [
             /^btn-(.*)$/,
             ([, c]) =>
-                `cursor-pointer px-3 py-1 bg-${c} text-white rounded-md border-solid border-2 border-${c} hover:(bg-${c}-dark border-${c}-darker)`,
+                `px-3 py-1 bg-${c} text-white rounded-md border-solid border-2 border-${c} hover:(bg-${c}-dark border-${c}-darker)`,
         ],
     ],
 });
