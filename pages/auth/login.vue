@@ -6,7 +6,7 @@
             type="text"
             class="border border-gray-400"
             placeholder="Username"
-            v-model="credentials.username"
+            v-model="credentials.email"
             autofocus
         />
         <input
@@ -25,22 +25,18 @@ const { login: authLogin } = authStore;
 const { loading } = storeToRefs(authStore);
 
 const credentials = reactive({
-    username: "",
+    email: "",
     password: "",
 });
 
 const login = async () => {
     const { error } = await authLogin(credentials);
 
-    if (error) {
-        alert(error);
-    } else {
-        navigateTo("/");
-    }
+    if (error) alert(error);
+    else navigateTo("/");
 };
 
 definePageMeta({
-    middleware: "guest",
     name: "login",
     // navbar: {
     //     label: "Login",
