@@ -2,9 +2,7 @@ import { defineConfig, presetWebFonts, presetUno, transformerDirectives } from "
 
 export default defineConfig({
     presets: [
-        presetUno({
-            dark: "media",
-        }),
+        presetUno(),
         presetWebFonts({
             provider: "google",
             fonts: {
@@ -41,7 +39,7 @@ export default defineConfig({
         [
             /^btn-(.*)$/,
             ([, c]) =>
-                `px-3 py-1 bg-${c} text-white rounded-md border-solid border-2 border-${c} hover:(bg-${c}-dark border-${c}-darker)`,
+                `px-3 py-1 bg-${c} text-white rounded-md border-solid border-2 border-${c} hover:(bg-${c}-dark border-${c}-darker) dark:(bg-${c}/40 border-${c}-darker/40) dark:(hover:(bg-${c}-dark/60 border-${c}-darker/60))`,
         ],
     ],
 });

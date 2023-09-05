@@ -3,5 +3,8 @@
 html,
 body {
     font-family: "Ubuntu";
-    --at-apply: "dark:(bg-dark text-light)";
+}
+
+body.dark {
+    --at-apply: "bg-dark text-light";
 }

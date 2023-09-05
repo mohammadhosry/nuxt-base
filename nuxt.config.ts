@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-    modules: ["@pinia/nuxt", "@unocss/nuxt", "@nuxtjs/supabase"],
+    modules: ["@pinia/nuxt", "@unocss/nuxt", "@nuxtjs/supabase", "@vueuse/nuxt"],
     pinia: {
         autoImports: ["defineStore", "acceptHMRUpdate", "storeToRefs"],
     },

@@ -1,9 +1,17 @@
 <template>
+    <Body :class="{ dark: isDark }" />
     <Navbar :items="items">
         <template #append>
             <li v-if="isLoggedIn">
                 <BaseButton variant="danger" @click="logout">Logout</BaseButton>
             </li>
+            <ClientOnly>
+                <li>
+                    <BaseButton variant="success" @click="isDark = !isDark">
+                        Dark mode {{ isDark ? "off" : "on" }}
+                    </BaseButton>
+                </li>
+            </ClientOnly>
         </template>
     </Navbar>
     <hr />
@@ -18,6 +26,7 @@ const user = useSupabaseUser();
 const { auth } = useSupabaseClient();
 
 const isLoggedIn = computed(() => !!user.value);
+const isDark = useDark(); // from vueuse
 
 const logout = async () => {
     const { error } = await auth.signOut();
