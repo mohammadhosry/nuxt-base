@@ -6,7 +6,8 @@
 </template>
 
 <script setup lang="ts">
-const { user } = useAuthStore();
+const user = useSupabaseUser();
+
 definePageMeta({
     // navbar: {
     //     order: 2,

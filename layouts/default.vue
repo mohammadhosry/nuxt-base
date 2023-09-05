@@ -7,19 +7,20 @@
         </template>
     </Navbar>
     <hr />
-    <pre>{{ { isLoggedIn, userEmail: user?.email, loading } }}</pre>
+    <pre>{{ { isLoggedIn, userEmail: user?.email } }}</pre>
     <main><slot /></main>
 </template>
 
 <script setup lang="ts">
 import { NavbarItem } from "types";
 
-const authStore = useAuthStore();
-const { logout: authLogout } = authStore;
-const { user, isLoggedIn, loading } = storeToRefs(authStore);
+const user = useSupabaseUser();
+const { auth } = useSupabaseClient();
+
+const isLoggedIn = computed(() => !!user.value);
 
 const logout = async () => {
-    const { error } = await authLogout();
+    const { error } = await auth.signOut();
 
     if (error) alert(error);
     else navigateTo("/");

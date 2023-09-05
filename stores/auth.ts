@@ -1,5 +1,6 @@
 import { UserLogin } from "types";
 
+// not used for now
 export const useAuthStore = defineStore("auth", () => {
     const user = useSupabaseUser();
     const { auth } = useSupabaseClient();

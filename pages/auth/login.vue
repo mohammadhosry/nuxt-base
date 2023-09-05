@@ -20,9 +20,8 @@
 </template>
 
 <script setup lang="ts">
-const authStore = useAuthStore();
-const { login: authLogin } = authStore;
-const { loading } = storeToRefs(authStore);
+const { auth } = useSupabaseClient();
+const loading = ref(false);
 
 const credentials = reactive({
     email: "",
@@ -30,7 +29,11 @@ const credentials = reactive({
 });
 
 const login = async () => {
-    const { error } = await authLogin(credentials);
+    loading.value = true;
+
+    const { error } = await auth.signInWithPassword(credentials);
+
+    loading.value = false;
 
     if (error) alert(error);
     else navigateTo("/");
