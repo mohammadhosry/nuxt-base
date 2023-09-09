@@ -1,34 +1,19 @@
 <template>
-    <nav class="flex">
-        <ul class="flex gap-x-4">
-            <!-- <li
-                v-for="({ name, path, meta }, index) in navbarRoutes"
-                :key="name"
-                class="text-blue-500 capitalize"
-            >
-                <NuxtLink :to="path" active-class="text-amber-600">{{
-                    meta?.navbar?.label || name
-                }}</NuxtLink>
-            </li> -->
-            <!-- <li class="text-blue-500">
-                <NuxtLink active-class="text-amber-600" to="/">Home</NuxtLink>
-            </li>
-            <li class="text-blue-500">
-                <NuxtLink active-class="text-amber-600" :to="{ name: 'login' }">Login</NuxtLink>
-            </li>
-            <li class="text-blue-500">
-                <NuxtLink active-class="text-amber-600" to="/profile">Profile</NuxtLink>
-            </li> -->
-            <template v-for="{ label, to, name, hide } in items" :key="name">
-                <li class="text-blue-500 capitalize" v-if="!hide">
-                    <NuxtLink active-class="text-amber-600" :to="to || { name }">{{
-                        label || name
-                    }}</NuxtLink>
-                </li>
-            </template>
-            <slot name="append"></slot>
-        </ul>
-    </nav>
+    <div class="bg-gray-100 dark:bg-dark-100">
+        <nav class="container mx-auto flex items-center justify-between py-3">
+            <ul class="flex items-center gap-x-4">
+                <template v-for="{ label, to, name, hide } in items" :key="name">
+                    <li class="text-blue-500 capitalize" v-if="!hide">
+                        <NuxtLink active-class="text-amber-600" :to="to || { name }">{{
+                            label || name
+                        }}</NuxtLink>
+                    </li>
+                </template>
+                <slot name="append"></slot>
+            </ul>
+            <slot name="userInfo"></slot>
+        </nav>
+    </div>
 </template>
 
 <script setup lang="ts">

@@ -1,21 +1,22 @@
 <template>
     <div>
-        <h1 class="text-3xl text-blue-900">Login</h1>
-        <br />
-        <input
-            type="text"
-            class="border border-gray-400"
-            placeholder="Username"
-            v-model="credentials.email"
-            autofocus
-        />
-        <input
-            type="password"
-            class="border border-gray-400"
-            placeholder="Password"
-            v-model="credentials.password"
-        />
-        <BaseButton variant="primary" @click="login" :disabled="loading">Login</BaseButton>
+        <h1 class="text-(3xl blue-900)">Login</h1>
+        <form @submit.prevent="login" class="mt-4 w-1/3">
+            <BaseInput
+                type="email"
+                placeholder="Email"
+                v-model="credentials.email"
+                autofocus
+                required
+            />
+            <BaseInput
+                type="password"
+                placeholder="Password"
+                v-model="credentials.password"
+                required
+            />
+            <BaseButton variant="primary" :disabled="loading">Login</BaseButton>
+        </form>
     </div>
 </template>
 
@@ -33,6 +34,8 @@ const login = async () => {
 
     const { error } = await auth.signInWithPassword(credentials);
 
+    console.log({ error });
+
     loading.value = false;
 
     if (error) alert(error);
@@ -41,9 +44,5 @@ const login = async () => {
 
 definePageMeta({
     name: "login",
-    // navbar: {
-    //     label: "Login",
-    //     order: 3,
-    // },
 });
 </script>

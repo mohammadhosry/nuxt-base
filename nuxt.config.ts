@@ -11,15 +11,10 @@ export default defineNuxtConfig({
             exclude: ["/"],
         },
     },
-    imports: { dirs: ["stores"] },
-    css: ["~/assets/main.css"],
-    app: {
-        head: {
-            // htmlAttrs: {
-            //     lang: "ar",
-            //     dir: "rtl",
-            // },
-            title: process.env.APP_NAME,
+    // imports: { dirs: ["stores"] }, // not used for now
+    runtimeConfig: {
+        public: {
+            appName: "Nuxt base",
         },
     },
     // devtools: { enabled: true }

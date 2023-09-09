@@ -9,6 +9,7 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
+    "@iconify-json/carbon": "^1.1.21",
     "@nuxt/devtools": "latest",
     "@nuxtjs/supabase": "^1.0.2",
     "@types/node": "^18.17.3",

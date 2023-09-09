@@ -8,9 +8,13 @@
 import { Variants } from "types";
 
 const variants: Variants = {
-    primary: "btn-primary",
-    danger: "btn-danger",
-    success: "btn-success",
+    primary: "btn-(~ primary)",
+    danger: "btn-(~ danger)",
+    success: "btn-(~ success)",
+
+    "outline-primary": "btn-(~ outline-primary)",
+    "outline-danger": "btn-(~ outline-danger)",
+    "outline-success": "btn-(~ outline-success)",
 };
 
 interface Props {

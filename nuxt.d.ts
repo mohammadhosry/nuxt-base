@@ -1,11 +1,11 @@
-// declare module "#app" {
-//     interface PageMeta {
-//         navbar?: {
-//             order?: number;
-//             label?: string;
-//             hide?: boolean;
-//         };
-//     }
-// }
+import { LanguageCode } from "types";
+
+declare module "nuxt/schema" {
+    interface AppConfigInput {
+        languages: LanguageCode[];
+        rtlLanguages: string[];
+        defaultLanguage: LanguageCode;
+    }
+}
 
 export {};

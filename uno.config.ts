@@ -1,4 +1,10 @@
-import { defineConfig, presetWebFonts, presetUno, transformerDirectives } from "unocss";
+import {
+    defineConfig,
+    presetWebFonts,
+    presetUno,
+    transformerVariantGroup,
+    presetIcons,
+} from "unocss";
 
 export default defineConfig({
     presets: [
@@ -14,8 +20,15 @@ export default defineConfig({
                 // },
             },
         }),
+        presetIcons({
+            extraProperties: {
+                display: "inline-block",
+                "vertical-align": "middle",
+            },
+            scale: 1.5,
+        }),
     ],
-    transformers: [transformerDirectives()],
+    transformers: [transformerVariantGroup()],
     theme: {
         colors: {
             primary: {
@@ -36,10 +49,18 @@ export default defineConfig({
         },
     },
     shortcuts: [
+        {
+            btn: "p-(x3 y1) border-(solid 2) border-(solid 2) rounded-md",
+        },
         [
-            /^btn-(.*)$/,
+            /^btn-([\w]*)$/,
             ([, c]) =>
-                `px-3 py-1 bg-${c} text-white rounded-md border-solid border-2 border-${c} hover:(bg-${c}-dark border-${c}-darker) dark:(bg-${c}/40 border-${c}-darker/40) dark:(hover:(bg-${c}-dark/60 border-${c}-darker/60))`,
+                `text-white border-${c} bg-${c} hover:(bg-${c}-dark border-${c}-darker) dark:(bg-${c}/40 border-${c}-darker/40 hover:(bg-${c}-dark/60 border-${c}-darker/60))`,
+        ],
+        [
+            /^btn-outline-([\w]*)$/,
+            ([, c]) =>
+                `text-${c} border-${c} hover:(text-white bg-${c}) dark:(text-${c}/60 border-${c}/60 hover:(bg-${c}/60))`,
         ],
     ],
 });

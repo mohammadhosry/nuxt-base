@@ -1,22 +1,27 @@
 <template>
-    <Body :class="{ dark: isDark }" />
     <Navbar :items="items">
         <template #append>
             <li v-if="isLoggedIn">
                 <BaseButton variant="danger" @click="logout">Logout</BaseButton>
             </li>
-            <ClientOnly>
-                <li>
-                    <BaseButton variant="success" @click="isDark = !isDark">
-                        Dark mode {{ isDark ? "off" : "on" }}
-                    </BaseButton>
-                </li>
-            </ClientOnly>
+            <li>
+                <select
+                    class="appearance-none border-2 p-(x4 y2) rounded-2 dark:bg-transparent"
+                    v-model="siteLanguage"
+                >
+                    <option v-for="lang in languages">{{ lang }}</option>
+                </select>
+            </li>
+            <li>
+                <BaseButton variant="primary" @click="isDark = !isDark">
+                    <i class="i-carbon-moon dark:i-carbon-sun"></i>
+                </BaseButton>
+            </li>
         </template>
+        <template v-if="isLoggedIn" #userInfo> Hi {{ user.email.split("@")[0] }} </template>
     </Navbar>
-    <hr />
-    <pre>{{ { isLoggedIn, userEmail: user?.email } }}</pre>
-    <main><slot /></main>
+    <main class="container mx-auto pt-10"><slot /></main>
+    <Footer />
 </template>
 
 <script setup lang="ts">
@@ -27,6 +32,8 @@ const { auth } = useSupabaseClient();
 
 const isLoggedIn = computed(() => !!user.value);
 const isDark = useDark(); // from vueuse
+
+const { siteLanguage, languages } = useSiteLanguage(); // uses useLocalStorage from vueuse
 
 const logout = async () => {
     const { error } = await auth.signOut();
