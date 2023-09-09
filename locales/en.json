@@ -1,0 +1,12 @@
+{
+    "ar": "Arabic",
+    "he": "Hebrew",
+    "en": "English",
+    "home": "Home",
+    "profile": "Profile",
+    "login": "Login",
+    "email": "Email",
+    "password": "Password",
+    "logout": "Logout",
+    "greeting": "Hi {name}"
+}

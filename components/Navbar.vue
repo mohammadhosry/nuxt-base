@@ -5,7 +5,7 @@
                 <template v-for="{ label, to, name, hide } in items" :key="name">
                     <li class="text-blue-500 capitalize" v-if="!hide">
                         <NuxtLink active-class="text-amber-600" :to="to || { name }">{{
-                            label || name
+                            label || ($te(name) ? $t(name) : name)
                         }}</NuxtLink>
                     </li>
                 </template>

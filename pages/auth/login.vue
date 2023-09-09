@@ -1,21 +1,21 @@
 <template>
     <div>
-        <h1 class="text-(3xl blue-900)">Login</h1>
+        <h1 class="text-(3xl blue-900) dark:text-sky-300">{{ $t("login") }}</h1>
         <form @submit.prevent="login" class="mt-4 w-1/3">
             <BaseInput
                 type="email"
-                placeholder="Email"
+                :placeholder="$t('email')"
                 v-model="credentials.email"
                 autofocus
                 required
             />
             <BaseInput
                 type="password"
-                placeholder="Password"
+                :placeholder="$t('password')"
                 v-model="credentials.password"
                 required
             />
-            <BaseButton variant="primary" :disabled="loading">Login</BaseButton>
+            <BaseButton variant="primary" :disabled="loading">{{ $t("login") }}</BaseButton>
         </form>
     </div>
 </template>

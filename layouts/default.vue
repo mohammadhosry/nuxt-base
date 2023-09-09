@@ -2,14 +2,14 @@
     <Navbar :items="items">
         <template #append>
             <li v-if="isLoggedIn">
-                <BaseButton variant="danger" @click="logout">Logout</BaseButton>
+                <BaseButton variant="danger" @click="logout">{{ $t("logout") }}</BaseButton>
             </li>
             <li>
                 <select
-                    class="appearance-none border-2 p-(x4 y2) rounded-2 dark:bg-transparent"
+                    class="appearance-none text-center border-2 p-(x4 y2) rounded-2 dark:bg-transparent"
                     v-model="siteLanguage"
                 >
-                    <option v-for="lang in languages">{{ lang }}</option>
+                    <option v-for="lang in languages" :value="lang">{{ $t(lang) }}</option>
                 </select>
             </li>
             <li>
@@ -18,7 +18,9 @@
                 </BaseButton>
             </li>
         </template>
-        <template v-if="isLoggedIn" #userInfo> Hi {{ user.email.split("@")[0] }} </template>
+        <template v-if="isLoggedIn" #userInfo>
+            {{ $t("greeting", { name: user.email.split("@")[0] }) }}
+        </template>
     </Navbar>
     <main class="container mx-auto pt-10"><slot /></main>
     <Footer />
@@ -29,6 +31,8 @@ import { NavbarItem } from "types";
 
 const user = useSupabaseUser();
 const { auth } = useSupabaseClient();
+
+const { t } = useI18n();
 
 const isLoggedIn = computed(() => !!user.value);
 const isDark = useDark(); // from vueuse
