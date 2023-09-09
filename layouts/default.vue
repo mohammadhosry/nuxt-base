@@ -32,8 +32,6 @@ import { NavbarItem } from "types";
 const user = useSupabaseUser();
 const { auth } = useSupabaseClient();
 
-const { t } = useI18n();
-
 const isLoggedIn = computed(() => !!user.value);
 const isDark = useDark(); // from vueuse
 
