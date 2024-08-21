@@ -1,6 +1,25 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-    modules: ["@pinia/nuxt", "@unocss/nuxt", "@nuxtjs/supabase", "@vueuse/nuxt", "@nuxtjs/i18n"],
+    modules: [
+        "@nuxthub/core",
+        "@pinia/nuxt",
+        "@unocss/nuxt",
+        "@nuxtjs/supabase",
+        "@vueuse/nuxt",
+        "@nuxtjs/i18n",
+    ],
+    hub: {
+        database: true,
+        kv: true,
+        blob: true,
+        cache: true,
+    },
+    nitro: {
+        experimental: {
+            // Enable Server API documentation within NuxtHub
+            openAPI: true,
+        },
+    },
     pinia: {
         autoImports: ["defineStore", "acceptHMRUpdate", "storeToRefs"],
     },
