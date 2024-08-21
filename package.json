@@ -16,12 +16,14 @@
     "@types/node": "^18.17.3",
     "@unocss/nuxt": "^0.55.3",
     "@vueuse/nuxt": "^10.4.1",
-    "@nuxthub/core": "^0.6.2",
-    "nuxt": "^3.6.5"
+    "vue-tsc": "^2.0.19",
+    "wrangler": "^3.58.0"
   },
   "dependencies": {
     "@pinia/nuxt": "^0.4.11",
     "@unocss/reset": "^0.55.3",
-    "pinia": "^2.1.6"
+    "pinia": "^2.1.6",
+    "@nuxthub/core": "^0.6.2",
+    "nuxt": "^3.6.5"
   }
 }
