@@ -1,49 +1,47 @@
-import { UserLogin } from "types";
+// // not used for now
+// export const useAuthStore = defineStore("auth", () => {
+//     const user = useSupabaseUser();
+//     const { auth } = useSupabaseClient();
 
-// not used for now
-export const useAuthStore = defineStore("auth", () => {
-    const user = useSupabaseUser();
-    const { auth } = useSupabaseClient();
+//     const loading = ref(false);
 
-    const loading = ref(false);
+//     const isLoggedIn = computed(() => !!user.value);
 
-    const isLoggedIn = computed(() => !!user.value);
+//     async function login({ email, password }: UserLogin) {
+//         loading.value = true;
 
-    async function login({ email, password }: UserLogin) {
-        loading.value = true;
+//         const { data, error } = await auth.signInWithPassword({
+//             email,
+//             password,
+//         });
 
-        const { data, error } = await auth.signInWithPassword({
-            email,
-            password,
-        });
+//         loading.value = false;
 
-        loading.value = false;
+//         return {
+//             user: data,
+//             error,
+//         };
+//     }
 
-        return {
-            user: data,
-            error,
-        };
-    }
+//     async function logout() {
+//         loading.value = true;
 
-    async function logout() {
-        loading.value = true;
+//         const { error } = await auth.signOut();
 
-        const { error } = await auth.signOut();
+//         loading.value = false;
 
-        loading.value = false;
+//         return { error };
+//     }
 
-        return { error };
-    }
+//     return {
+//         user,
+//         isLoggedIn,
+//         loading,
+//         login,
+//         logout,
+//     };
+// });
 
-    return {
-        user,
-        isLoggedIn,
-        loading,
-        login,
-        logout,
-    };
-});
-
-if (import.meta.hot) {
-    import.meta.hot.accept(acceptHMRUpdate(useAuthStore, import.meta.hot));
-}
+// if (import.meta.hot) {
+//     import.meta.hot.accept(acceptHMRUpdate(useAuthStore, import.meta.hot));
+// }

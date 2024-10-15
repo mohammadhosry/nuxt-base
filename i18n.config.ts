@@ -1,13 +1,42 @@
-import { I18nOptions } from "@nuxtjs/i18n";
-
-import { ar, he, en } from "./locales";
-
-export default defineI18nConfig<I18nOptions>(() => ({
+export default defineI18nConfig(() => ({
     legacy: false,
     locale: "en",
     messages: {
-        ar,
-        he,
-        en,
+        ar: {
+            ar: "العربية",
+            he: "العبرية",
+            en: "الانجليزية",
+            home: "الرئيسية",
+            profile: "الحساب",
+            login: "تسجيل الدخول",
+            email: "البريد الإلكتروني",
+            password: "كلمة المرور",
+            logout: "تسجيل الخروج",
+            greeting: "مرحبا {name}",
+        },
+        he: {
+            ar: "ערבית",
+            he: "עברית",
+            en: "אנגלית",
+            home: "ראשי",
+            profile: "פרופיל",
+            login: "התחבר",
+            email: "מייל",
+            password: "סיסמה",
+            logout: "התנתק",
+            greeting: "היי {name}",
+        },
+        en: {
+            ar: "Arabic",
+            he: "Hebrew",
+            en: "English",
+            home: "Home",
+            profile: "Profile",
+            login: "Login",
+            email: "Email",
+            password: "Password",
+            logout: "Logout",
+            greeting: "Hi {name}",
+        },
     },
 }));

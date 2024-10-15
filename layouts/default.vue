@@ -18,8 +18,8 @@
                 </BaseButton>
             </li>
         </template>
-        <template v-if="isLoggedIn" #userInfo>
-            {{ $t("greeting", { name: user.email.split("@")[0] }) }}
+        <template v-if="isLoggedIn && user" #userInfo>
+            {{ $t("greeting", { name: user.email?.split("@")[0] || user.id }) }}
         </template>
     </Navbar>
     <main class="container mx-auto pt-10"><slot /></main>
@@ -27,8 +27,6 @@
 </template>
 
 <script setup lang="ts">
-import { NavbarItem } from "types";
-
 const user = useSupabaseUser();
 const { auth } = useSupabaseClient();
 

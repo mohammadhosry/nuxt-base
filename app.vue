@@ -4,10 +4,10 @@
             <Title>{{ $config.public.appName }}</Title>
         </Head>
         <Body class="font-ubuntu dark:(bg-dark text-light)">
-            <NuxtLayout v-if="!loading">
+            <NuxtLayout>
                 <NuxtPage />
+                <Loading v-if="loading" />
             </NuxtLayout>
-            <Loading v-else />
         </Body>
     </Html>
 </template>
@@ -18,8 +18,9 @@ import "@unocss/reset/tailwind.css";
 const { dir, siteLanguage } = useSiteLanguage();
 const loading = ref(true);
 
-onMounted(async () => {
-    await nextTick();
-    loading.value = false;
+onMounted(() => {
+    nextTick().then(() => {
+        loading.value = false;
+    });
 });
 </script>

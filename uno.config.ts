@@ -10,7 +10,7 @@ export default defineConfig({
     presets: [
         presetUno(),
         presetWebFonts({
-            provider: "google",
+            provider: "bunny",
             fonts: {
                 ubuntu: "Ubuntu",
                 // ubuntu: {

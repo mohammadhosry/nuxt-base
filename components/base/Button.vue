@@ -5,8 +5,6 @@
 </template>
 
 <script setup lang="ts">
-import { Variants } from "types";
-
 const variants: Variants = {
     primary: "btn-(~ primary)",
     danger: "btn-(~ danger)",

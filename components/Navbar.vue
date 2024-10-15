@@ -17,8 +17,6 @@
 </template>
 
 <script setup lang="ts">
-import { NavbarItem } from "types";
-
 defineProps<{
     items: NavbarItem[];
 }>();
