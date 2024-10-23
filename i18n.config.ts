@@ -1,4 +1,4 @@
-export default defineI18nConfig(() => ({
+export default {
     legacy: false,
     locale: "en",
     messages: {
@@ -13,6 +13,9 @@ export default defineI18nConfig(() => ({
             password: "كلمة المرور",
             logout: "تسجيل الخروج",
             greeting: "مرحبا {name}",
+            products: "المنتجات",
+            create: "انشاء",
+            delete: "حذف",
         },
         he: {
             ar: "ערבית",
@@ -25,6 +28,9 @@ export default defineI18nConfig(() => ({
             password: "סיסמה",
             logout: "התנתק",
             greeting: "היי {name}",
+            products: "מוצרים",
+            create: "יצירה",
+            delete: "מחיקה",
         },
         en: {
             ar: "Arabic",
@@ -37,6 +43,9 @@ export default defineI18nConfig(() => ({
             password: "Password",
             logout: "Logout",
             greeting: "Hi {name}",
+            products: "Products",
+            create: "Create",
+            delete: "Delete",
         },
     },
-}));
+};

@@ -1,5 +1,5 @@
 <template>
-    <button :class="variantClasses" v-bind="$attrs">
+    <button :class="[variantClasses, 'disabled:(cursor-not-allowed opacity-50)']" v-bind="$attrs">
         <slot></slot>
     </button>
 </template>

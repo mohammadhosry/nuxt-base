@@ -7,9 +7,12 @@
             <li>
                 <select
                     class="appearance-none text-center border-2 p-(x4 y2) rounded-2 dark:bg-transparent"
-                    v-model="siteLanguage"
+                    :value="locale"
+                    @change="(e) => setLocale((e.target as HTMLSelectElement).value)"
                 >
-                    <option v-for="lang in languages" :value="lang">{{ $t(lang) }}</option>
+                    <option v-for="locale in localeCodes" :value="locale" :key="locale">
+                        {{ $t(locale) }}
+                    </option>
                 </select>
             </li>
             <li>
@@ -31,9 +34,24 @@ const user = useSupabaseUser();
 const { auth } = useSupabaseClient();
 
 const isLoggedIn = computed(() => !!user.value);
-const isDark = useDark(); // from vueuse
+// const isDark = useDark({ disableTransition: false }); // from vueuse
 
-const { siteLanguage, languages } = useSiteLanguage(); // uses useLocalStorage from vueuse
+const isDark = useLocalStorage(
+    "vueuse-color-scheme",
+    document?.documentElement?.classList?.contains("dark") || false,
+    {
+        serializer: {
+            read: (value: string) => value === "dark",
+            write: (value: boolean) => {
+                document.documentElement.classList[value ? "add" : "remove"]("dark");
+                return value ? "dark" : "light";
+            },
+        },
+    }
+);
+
+// const { languages } = useSiteLanguage(); // uses useLocalStorage from vueuse
+const { locale, setLocale, localeCodes } = useI18n();
 
 const logout = async () => {
     const { error } = await auth.signOut();
@@ -46,5 +64,6 @@ const items = computed<NavbarItem[]>(() => [
     { name: "home" },
     { name: "profile", hide: !isLoggedIn.value },
     { name: "login", hide: isLoggedIn.value },
+    { name: "products" },
 ]);
 </script>

@@ -1,5 +1,5 @@
 <template>
-    <Html :lang="siteLanguage" :dir="dir">
+    <Html :lang="locale" :dir="locales.find((l) => l.code === locale)?.dir">
         <Head>
             <Title>{{ $config.public.appName }}</Title>
         </Head>
@@ -15,7 +15,8 @@
 <script setup lang="ts">
 import "@unocss/reset/tailwind.css";
 
-const { dir, siteLanguage } = useSiteLanguage();
+const { locale, locales } = useI18n();
+// const { dir } = useSiteLanguage();
 const loading = ref(true);
 
 onMounted(() => {

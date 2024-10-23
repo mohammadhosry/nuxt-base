@@ -9,6 +9,7 @@ export default defineNuxtConfig({
         "@nuxtjs/supabase",
         "@vueuse/nuxt",
         "@nuxtjs/i18n",
+        "@twicpics/components/nuxt3",
     ],
 
     hub: {
@@ -33,7 +34,7 @@ export default defineNuxtConfig({
         redirectOptions: {
             login: "/auth/login",
             callback: "/confirm",
-            exclude: ["/"],
+            exclude: ["/", "/products", "/*/products"],
         },
     },
 
@@ -42,6 +43,49 @@ export default defineNuxtConfig({
     runtimeConfig: {
         public: {
             appName: "Nuxt base",
+        },
+    },
+
+    i18n: {
+        // legacy: false,
+        // locale: "en",
+        locales: [
+            {
+                code: "en",
+                name: "English",
+                dir: "ltr",
+            },
+            {
+                code: "ar",
+                name: "Arabic",
+                dir: "rtl",
+            },
+            {
+                code: "he",
+                name: "Hebrew",
+                dir: "rtl",
+            },
+        ],
+        defaultLocale: "en",
+        // vueI18n: './i18n.config.ts',
+        vueI18n: "./i18n.config.ts",
+    },
+
+    twicpics: {
+        domain: `https://zarafa.twic.pics`,
+    },
+
+    app: {
+        head: {
+            script: [
+                {
+                    innerHTML: `
+if (localStorage.getItem("vueuse-color-scheme") === "dark") {
+    document.documentElement.classList.add("dark");
+}
+`,
+                },
+            ],
         },
     },
 
