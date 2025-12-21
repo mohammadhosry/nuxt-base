@@ -10,25 +10,27 @@
         "preview": "npx nuxthub preview",
         "deploy": "npx nuxthub deploy",
         "postinstall": "nuxt prepare",
+        "typecheck": "nuxt prepare && vue-tsc -b --noEmit",
         "db:generate": "drizzle-kit generate"
     },
     "devDependencies": {
-        "@iconify-json/carbon": "^1.2.3",
-        "@nuxt/devtools": "^2.1.1",
-        "@nuxtjs/i18n": "^10.0.6",
-        "@types/node": "^24.3.0",
-        "@unocss/nuxt": "^66.0.0",
-        "drizzle-kit": "^0.31.4",
-        "vue-tsc": "^3.0.6",
-        "wrangler": "^4.9.1"
+        "@iconify-json/carbon": "^1.2.15",
+        "@nuxt/devtools": "^3.1.1",
+        "@nuxtjs/i18n": "^10.2.1",
+        "@types/node": "^25.0.3",
+        "@unocss/nuxt": "^66.5.10",
+        "drizzle-kit": "^0.31.8",
+        "vue-tsc": "^3.2.0",
+        "wrangler": "^4.56.0"
     },
     "dependencies": {
-        "@nuxthub/core": "^0.10.0",
+        "@libsql/client": "^0.15.15",
+        "@nuxthub/core": "^0.10.3",
         "@twicpics/components": "^0.33.0",
-        "@unocss/reset": "^66.0.0",
-        "@vueuse/nuxt": "^13.8.0",
-        "drizzle-orm": "^0.44.5",
-        "nuxt": "^4.0.3"
+        "@unocss/reset": "^66.5.10",
+        "@vueuse/nuxt": "^14.1.0",
+        "drizzle-orm": "^0.45.1",
+        "nuxt": "^4.2.2"
     },
     "packageManager": "pnpm@10.26.1"
 }
