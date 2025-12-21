@@ -1,19 +1,23 @@
-import { serverSupabaseUser } from "#supabase/server";
+import { eq } from "drizzle-orm";
+import { db, schema } from "hub:db";
+
+const { users } = schema;
 
 export default defineEventHandler(async (event) => {
-    try {
-        const user = await serverSupabaseUser(event);
-        console.log("auth middleware user id", user?.id);
+  const userId = getCookie(event, "userId");
 
-        event.context.auth = user;
-    } catch (error) {
-        event.context.auth = null;
+  if (!userId) {
+    event.context.auth = null;
+    return;
+  }
 
-        if (event.node.req.method !== "GET") {
-            throw createError({
-                statusCode: 401,
-                statusMessage: "Unauthorized",
-            });
-        }
-    }
+  const user = await db.select({
+    id: users.id,
+    email: users.email,
+  })
+    .from(users)
+    .where(eq(users.id, Number(userId)))
+    .get();
+
+  event.context.auth = user || null;
 });
