@@ -28,6 +28,12 @@ export default defineNuxtConfig({
   //   },
   // },
 
+  nitro: {
+    experimental: {
+      tasks: true
+    }
+  },
+
   // pinia: {
   //     autoImports: ["defineStore", "acceptHMRUpdate", "storeToRefs"],
   // },

@@ -2,7 +2,7 @@
     <Navbar :items="items">
         <template #append>
             <li v-if="isLoggedIn">
-                <BaseButton variant="danger" @click="logout">{{ $t("logout") }}</BaseButton>
+                <BaseButton variant="danger" @click="handleLogout">{{ $t("logout") }}</BaseButton>
             </li>
             <li>
                 <select class="appearance-none text-center border-2 p-(x4 y2) rounded-2 dark:bg-transparent"
@@ -29,11 +29,10 @@
 </template>
 
 <script setup lang="ts">
-// const user = useSupabaseUser();
-// const { auth } = useSupabaseClient();
+const { user, logout } = useUser();
 
-// const isLoggedIn = computed(() => !!user.value);
-const isLoggedIn = ref(false);
+const isLoggedIn = computed(() => Boolean(user.value));
+
 // const isDark = useDark({ disableTransition: false }); // from vueuse
 
 const isDark = useLocalStorage(
@@ -53,15 +52,14 @@ const isDark = useLocalStorage(
 // const { languages } = useSiteLanguage(); // uses useLocalStorage from vueuse
 const { locale, setLocale, localeCodes } = useI18n();
 
-const logout = async () => {
-    // const { error } = await auth.signOut();
+const handleLogout = async () => {
+    await logout();
 
-    // if (error) alert(error);
-    // else navigateTo("/");
+    navigateTo("/auth/login");
 };
 
 const items = computed<NavbarItem[]>(() => [
-    { name: "home" },
+    { name: "home", to: "/" },
     { name: "profile", hide: !isLoggedIn.value },
     { name: "login", hide: isLoggedIn.value },
     { name: "products" },
