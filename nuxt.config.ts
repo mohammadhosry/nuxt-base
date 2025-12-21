@@ -29,6 +29,7 @@ export default defineNuxtConfig({
   // },
 
   nitro: {
+    preset: 'cloudflare',
     experimental: {
       tasks: true
     }
