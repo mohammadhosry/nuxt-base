@@ -24,3 +24,5 @@ declare global {
         "outline-success": string;
     }
 }
+
+export { }

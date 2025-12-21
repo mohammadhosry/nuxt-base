@@ -1,25 +1,26 @@
 import {
     defineConfig,
-    presetWebFonts,
-    presetUno,
+    // presetWebFonts,
+    // presetUno,
     transformerVariantGroup,
     presetIcons,
+    presetWind3,
 } from "unocss";
 
 export default defineConfig({
     presets: [
-        presetUno(),
-        presetWebFonts({
-            provider: "bunny",
-            fonts: {
-                ubuntu: "Ubuntu",
-                // ubuntu: {
-                //     name: "Ubuntu",
-                //     italic: false,
-                //     weights: [400, 700],
-                // },
-            },
-        }),
+        presetWind3(),
+        // presetWebFonts({
+        //     provider: "bunny",
+        //     fonts: {
+        //         ubuntu: "Ubuntu",
+        //         // ubuntu: {
+        //         //     name: "Ubuntu",
+        //         //     italic: false,
+        //         //     weights: [400, 700],
+        //         // },
+        //     },
+        // }),
         presetIcons({
             extraProperties: {
                 display: "inline-block",

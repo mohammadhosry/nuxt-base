@@ -8,9 +8,3 @@
         <BaseButton variant="outline-danger" class="mt-3 block">foo</BaseButton>
     </div>
 </template>
-
-<script setup lang="ts">
-definePageMeta({
-    name: "home",
-});
-</script>

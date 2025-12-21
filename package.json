@@ -15,20 +15,20 @@
     "devDependencies": {
         "@iconify-json/carbon": "^1.2.3",
         "@nuxt/devtools": "^2.1.1",
-        "@nuxtjs/i18n": "^8.5.5",
-        "@types/node": "^22.7.5",
+        "@nuxtjs/i18n": "^10.0.6",
+        "@types/node": "^24.3.0",
         "@unocss/nuxt": "^66.0.0",
-        "drizzle-kit": "^0.30.6",
-        "vue-tsc": "^2.1.6",
+        "drizzle-kit": "^0.31.4",
+        "vue-tsc": "^3.0.6",
         "wrangler": "^4.9.1"
     },
     "dependencies": {
-        "@nuxthub/core": "^0.8.24",
-        "@nuxtjs/supabase": "^1.4.1",
-        "@twicpics/components": "^0.30.0",
+        "@nuxthub/core": "^0.10.0",
+        "@twicpics/components": "^0.33.0",
         "@unocss/reset": "^66.0.0",
-        "@vueuse/nuxt": "^11.1.0",
-        "drizzle-orm": "^0.41.0",
-        "nuxt": "^3.16.2"
-    }
+        "@vueuse/nuxt": "^13.8.0",
+        "drizzle-orm": "^0.44.5",
+        "nuxt": "^4.0.3"
+    },
+    "packageManager": "pnpm@10.26.1"
 }

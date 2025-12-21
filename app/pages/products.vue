@@ -4,7 +4,7 @@ definePageMeta({
 });
 
 const isLoading = ref(false);
-const user = useSupabaseUser();
+// const user = useSupabaseUser();
 
 const { data: products, refresh, status } = await useFetch("/api/products", { lazy: true });
 
@@ -46,7 +46,7 @@ const deleteProduct = async (id: number) => {
     <div>
         <h1 class="text-(3xl blue-900) dark:text-blue-400">{{ $t("products") }}</h1>
 
-        <template v-if="user">
+        <!-- <template v-if="user">
             <h2>create new procuct</h2>
 
             <form @submit.prevent="storeProduct" class="flex-(~ col) gap-3 my-5">
@@ -66,7 +66,7 @@ const deleteProduct = async (id: number) => {
                     {{ $t("create") }}
                 </BaseButton>
             </form>
-        </template>
+        </template> -->
 
         <ul class="grid-(~ cols-3) gap-4">
             <li v-for="product in products" :key="product.id">
@@ -81,14 +81,9 @@ const deleteProduct = async (id: number) => {
                 <br /> -->
                 [{{ product.id }}] {{ product.name }}
 
-                <BaseButton
-                    v-if="user"
-                    variant="danger"
-                    @click="deleteProduct(product.id)"
-                    :disabled="isLoading"
-                >
+                <!-- <BaseButton v-if="user" variant="danger" @click="deleteProduct(product.id)" :disabled="isLoading">
                     {{ $t("delete") }}
-                </BaseButton>
+                </BaseButton> -->
             </li>
         </ul>
     </div>

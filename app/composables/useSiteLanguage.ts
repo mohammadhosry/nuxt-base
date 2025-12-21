@@ -1,6 +1,6 @@
 export const useSiteLanguage = () => {
     const { languages, rtlLanguages } = useAppConfig();
-    const { locale, setLocale } = useI18n();
+    const { locale } = useI18n();
 
     // const siteLanguage = import.meta.client
     //     ? useLocalStorage("site_language", defaultLanguage)

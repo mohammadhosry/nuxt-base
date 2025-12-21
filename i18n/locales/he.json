@@ -8,5 +8,6 @@
     "email": "מייל",
     "password": "סיסמה",
     "logout": "התנתק",
-    "greeting": "היי {name}"
+    "greeting": "היי {name}",
+    "products": "מוצרים"
 }

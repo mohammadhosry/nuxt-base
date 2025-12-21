@@ -1,19 +1,22 @@
-import { serverSupabaseUser } from "#supabase/server";
+// import { serverSupabaseUser } from "#supabase/server";
 
 export default defineEventHandler(async (event) => {
-    try {
-        const user = await serverSupabaseUser(event);
-        console.log("auth middleware user id", user?.id);
+  console.log("auth middleware");
 
-        event.context.auth = user;
-    } catch (error) {
-        event.context.auth = null;
+  try {
+    // const user = await serverSupabaseUser(event);
+    const user = { id: 1 };
+    console.log("auth middleware user id", user?.id);
 
-        if (event.node.req.method !== "GET") {
-            throw createError({
-                statusCode: 401,
-                statusMessage: "Unauthorized",
-            });
-        }
+    event.context.auth = user;
+  } catch (error) {
+    event.context.auth = null;
+
+    if (event.node.req.method !== "GET") {
+      throw createError({
+        statusCode: 401,
+        statusMessage: "Unauthorized",
+      });
     }
+  }
 });

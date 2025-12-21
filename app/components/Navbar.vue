@@ -2,11 +2,7 @@
     <div class="bg-gray-100 dark:bg-dark-100">
         <nav class="container mx-auto flex items-center justify-between py-3">
             <ul class="flex items-center gap-x-4">
-                <li
-                    v-for="{ label, to, name, hide } in filteredItems"
-                    :key="name"
-                    class="text-blue-500 capitalize"
-                >
+                <li v-for="{ label, to, name, hide } in filteredItems" :key="name" class="text-blue-500 capitalize">
                     <NuxtLink active-class="text-amber-600" :to="localePath(to || name)">{{
                         label || ($te(name) ? $t(name) : name)
                     }}</NuxtLink>

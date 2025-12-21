@@ -1,14 +1,14 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   // pages: false,
-  future: { compatibilityVersion: 4 },
-  compatibilityDate: "2025-03-01",
+  // future: { compatibilityVersion: 4 },
+  // compatibilityDate: "2025-03-01",
 
   modules: [
     "@nuxthub/core",
     // "@pinia/nuxt",
     "@unocss/nuxt",
-    "@nuxtjs/supabase",
+    // "@nuxtjs/supabase",
     "@vueuse/nuxt",
     "@nuxtjs/i18n",
     "@twicpics/components/nuxt3",
@@ -21,24 +21,24 @@ export default defineNuxtConfig({
     cache: true,
   },
 
-  nitro: {
-    experimental: {
-      // Enable Server API documentation within NuxtHub
-      openAPI: true,
-    },
-  },
+  // nitro: {
+  //   experimental: {
+  //     // Enable Server API documentation within NuxtHub
+  //     openAPI: true,
+  //   },
+  // },
 
   // pinia: {
   //     autoImports: ["defineStore", "acceptHMRUpdate", "storeToRefs"],
   // },
 
-  supabase: {
-    redirectOptions: {
-      login: "/auth/login",
-      callback: "/confirm",
-      exclude: ["/", "/products", "/*/products"],
-    },
-  },
+  // supabase: {
+  //   redirectOptions: {
+  //     login: "/auth/login",
+  //     callback: "/confirm",
+  //     exclude: ["/", "/products", "/*/products"],
+  //   },
+  // },
 
   // imports: { dirs: ["stores"] }, // not used for now
   // devtools: { enabled: true }
@@ -56,21 +56,24 @@ export default defineNuxtConfig({
         code: "en",
         name: "English",
         dir: "ltr",
+        file: 'en.json'
       },
       {
         code: "ar",
         name: "Arabic",
         dir: "rtl",
+        file: 'ar.json'
       },
       {
         code: "he",
         name: "Hebrew",
         dir: "rtl",
+        file: 'he.json'
       },
     ],
     defaultLocale: "en",
     // vueI18n: './i18n.config.ts',
-    vueI18n: "./i18n.config.ts",
+    // vueI18n: "./i18n.config.ts",
   },
 
   twicpics: {
@@ -90,4 +93,6 @@ if (localStorage.getItem("vueuse-color-scheme") === "dark") {
       ],
     },
   },
+
+  compatibilityDate: "2025-04-22",
 });

@@ -1,14 +1,18 @@
 <template>
     <Html :lang="locale" :dir="locales.find((l) => l.code === locale)?.dir">
-        <Head>
-            <Title>{{ $config.public.appName }}</Title>
-        </Head>
-        <Body class="font-ubuntu dark:(bg-dark text-light)">
-            <NuxtLayout>
-                <NuxtPage />
-                <Loading v-if="loading" />
-            </NuxtLayout>
-        </Body>
+
+    <Head>
+        <Title>{{ $config.public.appName }}</Title>
+    </Head>
+
+    <Body class="dark:(bg-dark text-light)">
+        <NuxtLayout>
+            <NuxtLoadingIndicator />
+            <NuxtPage />
+            <!-- <Loading v-if="loading" /> -->
+        </NuxtLayout>
+    </Body>
+
     </Html>
 </template>
 
@@ -19,9 +23,8 @@ const { locale, locales } = useI18n();
 // const { dir } = useSiteLanguage();
 const loading = ref(true);
 
-onMounted(() => {
-    nextTick().then(() => {
-        loading.value = false;
-    });
+onMounted(async () => {
+    await nextTick();
+    loading.value = false;
 });
 </script>

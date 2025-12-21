@@ -5,11 +5,8 @@
                 <BaseButton variant="danger" @click="logout">{{ $t("logout") }}</BaseButton>
             </li>
             <li>
-                <select
-                    class="appearance-none text-center border-2 p-(x4 y2) rounded-2 dark:bg-transparent"
-                    :value="locale"
-                    @change="(e) => setLocale((e.target as HTMLSelectElement).value)"
-                >
+                <select class="appearance-none text-center border-2 p-(x4 y2) rounded-2 dark:bg-transparent"
+                    :value="locale" @change="setLocale(($event.target as HTMLSelectElement).value as LanguageCode)">
                     <option v-for="locale in localeCodes" :value="locale" :key="locale">
                         {{ $t(locale) }}
                     </option>
@@ -21,19 +18,22 @@
                 </BaseButton>
             </li>
         </template>
-        <template v-if="isLoggedIn && user" #userInfo>
+        <!-- <template v-if="isLoggedIn && user" #userInfo>
             {{ $t("greeting", { name: user.email?.split("@")[0] || user.id }) }}
-        </template>
+        </template> -->
     </Navbar>
-    <main class="container mx-auto pt-10"><slot /></main>
+    <main class="container mx-auto pt-10">
+        <slot />
+    </main>
     <Footer />
 </template>
 
 <script setup lang="ts">
-const user = useSupabaseUser();
-const { auth } = useSupabaseClient();
+// const user = useSupabaseUser();
+// const { auth } = useSupabaseClient();
 
-const isLoggedIn = computed(() => !!user.value);
+// const isLoggedIn = computed(() => !!user.value);
+const isLoggedIn = ref(false);
 // const isDark = useDark({ disableTransition: false }); // from vueuse
 
 const isDark = useLocalStorage(
@@ -54,10 +54,10 @@ const isDark = useLocalStorage(
 const { locale, setLocale, localeCodes } = useI18n();
 
 const logout = async () => {
-    const { error } = await auth.signOut();
+    // const { error } = await auth.signOut();
 
-    if (error) alert(error);
-    else navigateTo("/");
+    // if (error) alert(error);
+    // else navigateTo("/");
 };
 
 const items = computed<NavbarItem[]>(() => [
