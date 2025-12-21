@@ -3,24 +3,24 @@
     "d1_databases": [
         {
             "binding": "DB",
-            "database_name": "<database-name>",
-            "database_id": "<database-id>"
+            "database_name": "nuxt-base",
+            "database_id": "a3c67db7-6a19-4e6f-b510-bcb18969e284"
         }
     ],
     "r2_buckets": [
         {
             "binding": "BLOB",
-            "bucket_name": "<bucket-name>"
+            "bucket_name": "nuxt-base"
         }
     ],
     "kv_namespaces": [
         {
             "binding": "KV",
-            "id": "<kv-namespace-id>"
+            "id": "071e2478152e41638a323a0ad514dad7"
         },
         {
             "binding": "CACHE",
-            "id": "<cache-namespace-id>"
+            "id": "9d7cbaf790d24f54a7769728e9bee6b3"
         }
     ]
 }
