@@ -17,11 +17,12 @@ export default defineNuxtConfig({
   },
   compatibilityDate: "2025-12-21",
   nitro: {
-    preset: 'cloudflare_module',
-    cloudflare: {
-      deployConfig: true,
-      nodeCompat: true
-    },
+    preset: 'cloudflare-pages',
+    // preset: 'cloudflare_module',
+    // cloudflare: {
+    //   deployConfig: true,
+    //   nodeCompat: true
+    // },
     experimental: {
       tasks: true,
       openAPI: true,
