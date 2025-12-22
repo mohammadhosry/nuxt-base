@@ -1,9 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  // pages: false,
-  // future: { compatibilityVersion: 4 },
-  // compatibilityDate: "2025-03-01",
-
   modules: [
     "@nuxthub/core",
     // "@pinia/nuxt",
@@ -13,48 +9,30 @@ export default defineNuxtConfig({
     "@nuxtjs/i18n",
     "@twicpics/components/nuxt3",
   ],
-
   hub: {
     db: 'sqlite',
     kv: true,
     blob: true,
     cache: true,
   },
-
-  // nitro: {
-  //   experimental: {
-  //     // Enable Server API documentation within NuxtHub
-  //     openAPI: true,
-  //   },
-  // },
-
+  compatibilityDate: "2025-12-21",
   nitro: {
     preset: 'cloudflare-pages',
+    // preset: 'cloudflare_module',
+    // cloudflare: {
+    //   deployConfig: true,
+    //   nodeCompat: true
+    // },
     experimental: {
-      tasks: true
+      tasks: true,
+      openAPI: true,
     }
   },
-
-  // pinia: {
-  //     autoImports: ["defineStore", "acceptHMRUpdate", "storeToRefs"],
-  // },
-
-  // supabase: {
-  //   redirectOptions: {
-  //     login: "/auth/login",
-  //     callback: "/confirm",
-  //     exclude: ["/", "/products", "/*/products"],
-  //   },
-  // },
-
-  // imports: { dirs: ["stores"] }, // not used for now
-  // devtools: { enabled: true }
   runtimeConfig: {
     public: {
       appName: "Nuxt base",
     },
   },
-
   i18n: {
     // legacy: false,
     // locale: "en",
@@ -100,6 +78,4 @@ if (localStorage.getItem("vueuse-color-scheme") === "dark") {
       ],
     },
   },
-
-  compatibilityDate: "2025-04-22",
 });

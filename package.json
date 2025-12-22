@@ -7,8 +7,6 @@
         "dev": "nuxt dev",
         "dev-remote": "npx nuxi dev --remote",
         "generate": "nuxt generate",
-        "preview": "npx nuxthub preview",
-        "deploy": "npx nuxthub deploy",
         "postinstall": "nuxt prepare",
         "typecheck": "nuxt prepare && vue-tsc -b --noEmit",
         "db:generate": "drizzle-kit generate"
