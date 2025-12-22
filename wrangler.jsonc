@@ -1,15 +1,12 @@
 {
     "$schema": "node_modules/wrangler/config-schema.json",
-    "name": "nuxt-base",
-    "main": "./.output/server/index.mjs",
-    "compatibility_date": "2025-12-21",
-    "assets": {
-        "directory": "./.output/public/",
-        "binding": "ASSETS"
-    },
-    "observability": {
-        "enabled": true
-    },
+    "d1_databases": [
+        {
+            "binding": "DB",
+            "database_name": "nuxt-base",
+            "database_id": "a3c67db7-6a19-4e6f-b510-bcb18969e284"
+        }
+    ],
     "r2_buckets": [
         {
             "binding": "BLOB",
@@ -18,44 +15,12 @@
     ],
     "kv_namespaces": [
         {
-            "binding": "CACHE",
-            "id": "9d7cbaf790d24f54a7769728e9bee6b3"
-        },
-        {
             "binding": "KV",
             "id": "071e2478152e41638a323a0ad514dad7"
-        }
-    ],
-    "d1_databases": [
+        },
         {
-            "binding": "DB",
-            "database_id": "a3c67db7-6a19-4e6f-b510-bcb18969e284"
+            "binding": "CACHE",
+            "id": "9d7cbaf790d24f54a7769728e9bee6b3"
         }
-    ],
-    "env": {
-        "preview": {
-            "r2_buckets": [
-                {
-                    "binding": "BLOB",
-                    "bucket_name": "nuxt-base"
-                }
-            ],
-            "kv_namespaces": [
-                {
-                    "binding": "CACHE",
-                    "id": "9d7cbaf790d24f54a7769728e9bee6b3"
-                },
-                {
-                    "binding": "KV",
-                    "id": "071e2478152e41638a323a0ad514dad7"
-                }
-            ],
-            "d1_databases": [
-                {
-                    "binding": "DB",
-                    "database_id": "a3c67db7-6a19-4e6f-b510-bcb18969e284"
-                }
-            ]
-        }
-    }
+    ]
 }
