@@ -1,0 +1,13 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1790794795410,
+      "tag": "20260930185955_bizarre_silver_sable",
+      "breakpoints": true
+    }
+  ]
+}
