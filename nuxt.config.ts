@@ -1,7 +1,5 @@
 import { resolve } from "node:path";
 import { voidPlugin } from "void";
-// Loads the module's NitroOptions augmentation so cloudflareDev typechecks.
-import type {} from "nitro-cloudflare-dev";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -21,13 +19,13 @@ export default defineNuxtConfig({
   compatibilityDate: "2025-12-21",
   nitro: {
     preset: "cloudflare-module",
-    // Nitro 2.13 can emulate Cloudflare natively, but it reads bindings from a
-    // root wrangler.jsonc, which void rejects once void.config.ts exists.
-    // void's own migrate script rewrites this exact shape, so keep it.
-    modules: ["nitro-cloudflare-dev"],
-    // Points at the config void writes, satisfying both tools.
-    cloudflareDev: {
-      configPath: resolve(__dirname, ".void-wrangler.jsonc"),
+    // voidPlugin selects Nitro's built-in "cloudflare-dev" preset in dev, which
+    // needs a wrangler config to read bindings from. void rejects a root
+    // wrangler.jsonc once void.config.ts exists, so point at the one it writes.
+    cloudflare: {
+      dev: {
+        configPath: resolve(__dirname, ".void-wrangler.jsonc"),
+      },
     },
     experimental: {
       openAPI: true,

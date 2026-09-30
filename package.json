@@ -20,7 +20,6 @@
         "@nuxtjs/i18n": "^10.2.1",
         "@types/node": "^25.0.3",
         "@unocss/nuxt": "^66.5.10",
-        "nitro-cloudflare-dev": "^0.2.2",
         "void": "^0.21.9",
         "vue-tsc": "^3.2.0",
         "wrangler": "^4.145.0"
