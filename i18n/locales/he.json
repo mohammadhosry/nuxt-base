@@ -9,5 +9,6 @@
     "password": "סיסמה",
     "logout": "התנתק",
     "greeting": "היי {name}",
-    "products": "מוצרים"
+    "products": "מוצרים",
+    "create": "צור"
 }

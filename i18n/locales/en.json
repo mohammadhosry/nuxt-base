@@ -9,5 +9,6 @@
     "password": "Password",
     "logout": "Logout",
     "greeting": "Hi {name}",
-    "products": "Products"
+    "products": "Products",
+    "create": "Create"
 }

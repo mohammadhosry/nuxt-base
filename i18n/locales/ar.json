@@ -9,5 +9,6 @@
     "password": "كلمة المرور",
     "logout": "تسجيل الخروج",
     "greeting": "مرحبا {name}",
-    "products": "منتجات"
+    "products": "منتجات",
+    "create": "إنشاء"
 }
