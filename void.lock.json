@@ -21,7 +21,10 @@
         "bucket_name": "nuxt-app-storage"
       }
     ],
-    "name": "nuxt-app"
+    "name": "nuxt-app",
+    "compatibility_flags": [
+      "nodejs_als"
+    ]
   },
-  "text": "{\n  \"account_id\": \"4e2a0666763dd77021727233a9031482\",\n  \"compatibility_date\": \"2025-12-21\",\n  \"d1_databases\": [\n    {\n      \"binding\": \"DB\",\n      \"database_name\": \"nuxt-app-db\",\n      \"database_id\": \"332b4b6a-90d5-41dd-adda-7e34c26d8a7e\",\n      \"migrations_dir\": \"./db/migrations\"\n    }\n  ],\n  \"r2_buckets\": [\n    {\n      \"binding\": \"STORAGE\",\n      \"bucket_name\": \"nuxt-app-storage\"\n    }\n  ],\n  \"name\": \"nuxt-app\"\n}\n"
+  "text": "{\n  \"account_id\": \"4e2a0666763dd77021727233a9031482\",\n  \"compatibility_date\": \"2025-12-21\",\n  \"d1_databases\": [\n    {\n      \"binding\": \"DB\",\n      \"database_name\": \"nuxt-app-db\",\n      \"database_id\": \"332b4b6a-90d5-41dd-adda-7e34c26d8a7e\",\n      \"migrations_dir\": \"./db/migrations\"\n    }\n  ],\n  \"r2_buckets\": [\n    {\n      \"binding\": \"STORAGE\",\n      \"bucket_name\": \"nuxt-app-storage\"\n    }\n  ],\n  \"name\": \"nuxt-app\",\n  \"compatibility_flags\": [\n    \"nodejs_als\"\n  ]\n}\n"
 }
