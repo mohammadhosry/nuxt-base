@@ -19,8 +19,10 @@ logs
 .idea
 
 # Local env files
+# void/env supports one local file only, so there is no .env.example
 .env
 .env.*
-!.env.example
 
+.void
 .wrangler
+server/middleware/__void-dev-trigger.ts

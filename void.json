@@ -1,0 +1,11 @@
+{
+  "$schema": "./node_modules/void/schema.json",
+  "inference": {
+    "build": "nuxt build",
+    "scanDirs": ["app", "server", "db", "shared"]
+  },
+  "worker": {
+    "compatibility_date": "2025-12-21",
+    "compatibility_flags": ["nodejs_compat"]
+  }
+}

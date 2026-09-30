@@ -1,3 +1,23 @@
+allowBuilds:
+  better-sqlite3: true
+  esbuild: true
+  sharp: true
+  workerd: true
+minimumReleaseAgeExclude:
+  - '@void/deploy-cloudflare@0.21.9'
+  - '@void/deploy-core@0.21.9'
+  - '@void/edge@0.21.9'
+  - '@void/isr@0.21.9'
+  - '@void/platform@0.21.9'
+  - void@0.21.9
+  - '@cloudflare/workerd-darwin-64@1.20260930.2'
+  - '@cloudflare/workerd-darwin-arm64@1.20260930.2'
+  - '@cloudflare/workerd-linux-64@1.20260930.2'
+  - '@cloudflare/workerd-linux-arm64@1.20260930.2'
+  - '@cloudflare/workerd-windows-64@1.20260930.2'
+  - miniflare@5.20260930.0-alpha
+  - workerd@1.20260930.2
+  - wrangler@4.145.0
 onlyBuiltDependencies:
   - '@parcel/watcher'
   - esbuild

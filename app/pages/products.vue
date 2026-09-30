@@ -17,12 +17,7 @@
 
         <ul class="grid-(~ cols-3) gap-4">
             <li v-for="product in products" :key="product.id">
-                <!-- <img v-if="product.image" :src="`/api/_hub/blob/${product.image}`" width="200" />
-                <img
-                    v-if="product.image"
-                    :src="`https://zarafa.twic.pics/${product.image}`"
-                    width="200"
-                /> -->
+                <!-- <img v-if="product.image" :src="`/api/_hub/blob/${product.image}`" width="200" /> -->
                 <TwicImg v-if="product.image" :src="product.image" refit ratio="3/4" />
                 <!-- {{ product.image }}
                 <br /> -->

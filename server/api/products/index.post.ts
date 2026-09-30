@@ -1,7 +1,9 @@
-import { eq } from 'drizzle-orm';
-import { db, schema } from 'hub:db'
-import { blob } from 'hub:blob'
+import { db, eq } from "void/db";
+import { storage } from "void/storage";
+import { products } from "@schema";
 
+const MAX_SIZE = 1024 * 1024;
+const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp", "image/avif", "image/gif"];
 
 export default eventHandler(async (event) => {
     const form = await readFormData(event);
@@ -12,13 +14,16 @@ export default eventHandler(async (event) => {
         throw createError({ statusCode: 400, message: "No file provided" });
     }
 
-    ensureBlob(file, {
-        maxSize: "1MB",
-        types: ["image"],
-    });
+    if (file.size > MAX_SIZE) {
+        throw createError({ statusCode: 413, message: "File exceeds 1MB" });
+    }
+
+    if (!ALLOWED_TYPES.includes(file.type)) {
+        throw createError({ statusCode: 415, message: "Only image uploads are allowed" });
+    }
 
     const product = await db
-        .insert(schema.products)
+        .insert(products)
         .values({
             name,
             createdAt: new Date(),
@@ -26,19 +31,17 @@ export default eventHandler(async (event) => {
         .returning()
         .get();
 
-    const uploadedFile = await blob.put(
-        `prd-main-${product.id}.${file.name.split(".").pop()}`,
-        file,
-        {
-            addRandomSuffix: true,
-            prefix: "images",
-        }
-    );
+    const extension = file.name.split(".").pop();
+    const key = `images/prd-main-${product.id}-${crypto.randomUUID().slice(0, 8)}.${extension}`;
+
+    await storage.put(key, file, {
+        httpMetadata: { contentType: file.type },
+    });
 
     return await db
-        .update(schema.products)
-        .set({ image: uploadedFile.pathname })
-        .where(eq(schema.products.id, product.id))
+        .update(products)
+        .set({ image: key })
+        .where(eq(products.id, product.id))
         .returning()
         .get();
 });

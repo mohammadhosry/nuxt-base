@@ -1,7 +1,5 @@
-import { eq } from "drizzle-orm";
-import { db, schema } from "hub:db";
-
-const { users } = schema;
+import { db, eq } from "void/db";
+import { users } from "@schema";
 
 export default defineEventHandler(async (event) => {
   const userId = getCookie(event, "userId");

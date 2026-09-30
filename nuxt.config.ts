@@ -1,7 +1,9 @@
+import { resolve } from "node:path";
+import { voidPlugin } from "void";
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   modules: [
-    "@nuxthub/core",
     // "@pinia/nuxt",
     "@unocss/nuxt",
     // "@nuxtjs/supabase",
@@ -9,24 +11,21 @@ export default defineNuxtConfig({
     "@nuxtjs/i18n",
     "@twicpics/components/nuxt3",
   ],
-  hub: {
-    db: 'sqlite',
-    kv: true,
-    blob: true,
-    cache: true,
+  // void's schema alias. Declared at the top level so Vite, Nitro, and the
+  // generated tsconfigs all resolve it.
+  alias: {
+    "@schema": resolve(__dirname, "db/schema.ts"),
   },
   compatibilityDate: "2025-12-21",
   nitro: {
-    preset: 'cloudflare-pages',
-    // preset: 'cloudflare_module',
-    // cloudflare: {
-    //   deployConfig: true,
-    //   nodeCompat: true
-    // },
+    preset: "cloudflare-module",
     experimental: {
       tasks: true,
       openAPI: true,
-    }
+    },
+  },
+  vite: {
+    plugins: [voidPlugin()],
   },
   runtimeConfig: {
     public: {

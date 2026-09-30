@@ -1,4 +1,5 @@
-import { db, schema } from 'hub:db'
+import { db } from 'void/db'
+import { users } from '@schema'
 
 export default defineTask({
     meta: {
@@ -8,14 +9,14 @@ export default defineTask({
     async run() {
         console.log('Seeding database...')
 
-        const users = [
+        const seedUsers = [
             {
                 email: 'mohammad.hosry@gmail.com',
                 password: 'mohammadmohammad',
             },
         ]
 
-        await db.insert(schema.users).values(users)
+        await db.insert(users).values(seedUsers)
 
         return { result: 'Database seeded successfully' }
     }

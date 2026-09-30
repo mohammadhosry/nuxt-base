@@ -1,12 +1,12 @@
-import { eq } from 'drizzle-orm';
-import { db, schema } from 'hub:db'
+import { db, eq } from 'void/db'
+import { users } from '@schema'
 
 // login
 export default eventHandler(async (event) => {
     const body = await readBody(event);
     const { email, password } = body;
 
-    const user = await db.select().from(schema.users).where(eq(schema.users.email, email)).get();
+    const user = await db.select().from(users).where(eq(users.email, email)).get();
 
     if (!user || user.password !== password) {
         throw createError({

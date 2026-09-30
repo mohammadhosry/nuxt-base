@@ -1,7 +1,6 @@
-import { db, schema } from 'hub:db'
+import { db } from "void/db";
+import { products } from "@schema";
 
 export default eventHandler(async () => {
-    const products = await db.select().from(schema.products).all();
-
-    return products;
+  return await db.select().from(products).all();
 });
