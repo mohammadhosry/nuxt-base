@@ -30,7 +30,6 @@ export default defineNuxtConfig({
       configPath: resolve(__dirname, ".void-wrangler.jsonc"),
     },
     experimental: {
-      tasks: true,
       openAPI: true,
     },
   },
