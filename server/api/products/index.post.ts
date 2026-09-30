@@ -32,7 +32,7 @@ export default eventHandler(async (event) => {
         .get();
 
     const extension = file.name.split(".").pop();
-    const key = `images/prd-main-${product.id}-${crypto.randomUUID().slice(0, 8)}.${extension}`;
+    const key = `void/images/prd-main-${product.id}-${crypto.randomUUID().slice(0, 8)}.${extension}`;
 
     await storage.put(key, file, {
         httpMetadata: { contentType: file.type },
