@@ -21,11 +21,11 @@ export default defineNuxtConfig({
   compatibilityDate: "2025-12-21",
   nitro: {
     preset: "cloudflare-module",
-    // Without this module, dev has no D1/R2 bindings and every request fails
-    // with "env: Missing Cloudflare binding 'DB'".
+    // Nitro 2.13 can emulate Cloudflare natively, but it reads bindings from a
+    // root wrangler.jsonc, which void rejects once void.config.ts exists.
+    // void's own migrate script rewrites this exact shape, so keep it.
     modules: ["nitro-cloudflare-dev"],
-    // void refuses a root wrangler.jsonc once void.config.ts exists, but
-    // nitro-cloudflare-dev needs one. Point it at the config void writes.
+    // Points at the config void writes, satisfying both tools.
     cloudflareDev: {
       configPath: resolve(__dirname, ".void-wrangler.jsonc"),
     },
@@ -33,7 +33,8 @@ export default defineNuxtConfig({
       tasks: true,
       openAPI: true,
     },
-  },  vite: {
+  },
+  vite: {
     plugins: [voidPlugin()],
   },
   runtimeConfig: {
