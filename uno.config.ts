@@ -4,12 +4,12 @@ import {
     // presetUno,
     transformerVariantGroup,
     presetIcons,
-    presetWind3,
+    presetWind4,
 } from "unocss";
 
 export default defineConfig({
     presets: [
-        presetWind3(),
+        presetWind4(),
         // presetWebFonts({
         //     provider: "bunny",
         //     fonts: {

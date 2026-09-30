@@ -6,7 +6,7 @@
             <h2>create new procuct</h2>
 
             <form @submit.prevent="storeProduct" class="flex-(~ col) gap-3 my-5">
-                <input type="text" name="name" placeholder="name" required class="dark:(bg-dark-100 text-gray-4)" />
+                <input type="text" name="name" placeholder="name" required class="dark:(bg-dark-100 text-gray-400)" />
                 <input type="file" name="file" required accept="image/*" />
                 <BaseButton :disabled="isLoading">
                     <i v-if="isLoading" class="i-carbon-circle-dash animate-(spin duration-2000)"></i>
